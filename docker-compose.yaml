@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  backend:
+    build: .
+
+  postgres_db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: pgdb
+    port:
+      - "5432:5432"
