@@ -1,8 +1,13 @@
 version: "3"
 
 services:
-  backend:
+  app:
     build: .
+    volumes:
+      - ./migrations:/app/migrations
+    command: bash -c "alembic upgrade head && python src/main.py"
+    depends_on:
+      - postgres_db
 
   postgres_db:
     image: postgres:16
@@ -11,5 +16,5 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_DB: pgdb
-    port:
+    ports:
       - "5432:5432"
