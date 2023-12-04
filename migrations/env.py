@@ -5,7 +5,7 @@ from sqlalchemy import pool
 
 from alembic import context
 
-from src.settings import settings
+from src.settings import Settings
 from src.registration import metadata_obj
 
 # this is the Alembic Config object, which provides
@@ -15,30 +15,31 @@ config = context.config
 # Here we allow ourselves to pass interpolation vars to alembic.ini
 # fron the host env
 section = config.config_ini_section
+settings = Settings()
 config.set_section_option(
                             section,
                             "DB_USER",
-                            settings.repository_settings.db_name
+                            settings.repository_settings.name
                             )
 config.set_section_option(
                             section,
                             "DB_PASS",
-                            settings.repository_settings.db_pass
+                            settings.repository_settings.passw
                             )
 config.set_section_option(
                             section,
                             "DB_HOST",
-                            settings.repository_settings.db_host
+                            settings.repository_settings.host
                             )
 config.set_section_option(
                             section,
                             "DB_PORT",
-                            settings.repository_settings.db_port
+                            settings.repository_settings.port
                             )
 config.set_section_option(
                             section,
                             "DB_NAME",
-                            settings.repository_settings.db_name
+                            settings.repository_settings.name
                             )
 
 # Interpret the config file for Python logging.

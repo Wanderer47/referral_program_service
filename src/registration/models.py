@@ -4,6 +4,7 @@ from sqlalchemy import  MetaData, Table, Column, Integer, String, TIMESTAMP
 
 metadata_obj = MetaData()
 
+# Contact with me table
 contact = Table(
         "contact",
         metadata_obj,
